@@ -131,7 +131,7 @@ with st.form("loan_application"):
 
         grade = st.selectbox(
             "Internally Assigned Loan Grade",
-            ["A", "B", "C", "D", "E", "F", "G"]
+            ["Select loan grade", "A", "B", "C", "D", "E", "F", "G"]
         )
 
         amount = st.number_input(
@@ -155,6 +155,14 @@ with st.form("loan_application"):
 
 # Make a prediction only when the form is submitted
 if submitted:
+
+    # Do not guess or automatically assign a loan grade
+    if grade == "Select loan grade":
+        st.error(
+            "An internally assigned loan grade is required. "
+            "Please obtain the grade before screening."
+        )
+        st.stop()
 
     # Map letter grades to the encoded training values
     grade_value = ord(grade) - ord("A")
