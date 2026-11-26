@@ -190,6 +190,22 @@ and supervised demonstration using fictional applicants.
 If the model fails the release checks, it should remain
 a coursework demonstration.
 
+### Review by Chirchir Collins — Model Evaluation and Release Testing
+
+I reviewed the Random Forest model's evaluation results and the decision threshold used in the Mulika SACCO application.
+
+At threshold 0.5, the model achieved 93.64% accuracy, 72.92% recall and an F1-score of 0.8339.
+
+Reducing the threshold to 0.3 increased default recall to 78.14%, but precision decreased from 97.36% to 84.26% and F1-score decreased to 0.8108.
+
+The model card proposes a minimum recall of 80% and an F1-score of 0.75 before release. Although the model meets the proposed F1-score requirement at threshold 0.3, its recall remains below the proposed minimum.
+
+I recommend selecting and validating the decision threshold using a separate validation dataset rather than repeatedly adjusting it on the final test set. The predicted probabilities should also be checked for calibration.
+
+Before operational deployment, the group should investigate the observed differences in recall across borrower groups, verify that the required input features are available at application time, and test the system with representative SACCO data.
+
+The application should remain a supervised coursework demonstration until the release criteria are met and qualified loan officers have reviewed its performance.
+
 ## Human Oversight
 
 The model supports but does not replace the loan officer.
