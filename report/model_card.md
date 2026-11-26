@@ -120,6 +120,18 @@ estimates may therefore be unreliable.
 These differences require investigation and do not alone
 establish discrimination.
 
+### Review by Collins Kipkorir — Fairness and Data Quality
+
+I reviewed the model's default recall across home-ownership and age groups.
+
+The largest observed difference was between OWN borrowers, with recall of 95.24%, and MORTGAGE borrowers, with recall of 55.39%. This represents a gap of 39.85 percentage points and suggests that the model may perform unevenly across borrower groups.
+
+The OTHER home-ownership group contained only five actual defaults, so its recall estimate is uncertain. The age group of 45 years and above also contained relatively few default cases.
+
+The dataset was cleaned using missing-value imputation, outlier handling and duplicate removal. These steps improved data preparation but may affect the distribution of borrower characteristics.
+
+I recommend further investigation of performance differences, validation on representative SACCO data and human review of lending decisions before operational deployment.
+
 ## Identifier and Leakage Checks
 
 No input column names matched the screened personal
