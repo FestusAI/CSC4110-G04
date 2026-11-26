@@ -13,14 +13,39 @@ authorised staff involved in reviewing loan applications.
 
 ## Data Source and Licence
 
-Dataset: Credit Risk Dataset
+**Dataset:** Credit Risk Dataset
 
-Original file: data/credit_risk_dataset.csv
+**Dataset uploader:** Lao Tse (Kaggle username: laotse)
 
-Cleaned file: data/clean_credit.csv
+**Source:** https://www.kaggle.com/datasets/laotse/credit-risk-dataset
 
-Dataset licence: TO BE VERIFIED from the original source
-before final submission or public deployment.
+**Licence:** CC0 — Public Domain
+
+**Download date:** 25 November 2026
+
+**Original filename:** credit_risk_dataset.csv
+
+**Original dataset size:** 32,581 rows and 12 columns.
+
+**Cleaned dataset:** data/clean_credit.csv
+
+The dataset contains historical-style borrower, loan and credit-history information used for educational credit-risk modelling.
+
+### Data Cleaning and Preparation
+
+The original dataset contained 32,581 records. During Task 2.1, 165 duplicate records, 5 records with impossible borrower ages and 2 records with impossible employment lengths were removed, leaving 32,409 records.
+
+I filled 887 missing employment-length values using the median and 3,094 missing interest-rate values using the median interest rate of the corresponding loan grade. I also applied the Interquartile Range method to cap income outliers.
+
+Records with imputed interest-rate targets were flagged so that they could be excluded from regression training.
+
+### Data Limitations
+
+- Missing-value imputation introduces estimated rather than observed values.
+- Capping income outliers reduces the influence of extreme values but may remove meaningful variation.
+- The dataset may not represent current Mulika SACCO applicants or local lending conditions.
+- Historical patterns may not generalise to new borrowers.
+- Dataset availability and reuse permission do not establish that a predictive model is fair or appropriate for real lending.
 
 ## Model and Features Used
 
