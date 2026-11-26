@@ -157,6 +157,20 @@ These checks do not rule out every source of leakage.
 - Historical patterns may reflect existing financial
   inequalities.
 
+  ### Review by Hartie Omuruon — Classification Performance and Limitations
+
+I reviewed the classification models developed during Tasks 4 and 6 to assess their suitability for loan-default screening.
+
+The Random Forest achieved the highest reported test F1-score of 0.8333, followed by Gradient Boosting at 0.8254. SVM achieved an F1-score of 0.7333, while Balanced Logistic Regression achieved 0.6369.
+
+Although Random Forest performed best in these experiments, it may be more difficult to explain than a simple decision tree or logistic regression model. Its performance could also change when applied to new applicants whose characteristics differ from the training data.
+
+The model uses historical credit-risk information, which may contain patterns that do not represent the current SACCO applicant population. It also uses an internally assigned loan grade, which must be available before screening to avoid using unavailable information.
+
+I recommend monitoring performance across borrower groups, checking probability calibration and validating the model using representative SACCO data before real deployment.
+
+The model should support loan officers and must not automatically approve or reject loan applications.
+
 ## Who Should Not Use the Model
 
 Applicants must not use this model to determine whether
