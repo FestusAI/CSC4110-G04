@@ -69,7 +69,7 @@ collects borrower details to calculate default risk.
 
 ## Online Application
 
-Public app URL: Not yet deployed.
+Public app URL: https://mulika-sacco-g04.streamlit.app/
 
 This section will be updated after Streamlit Community
 Cloud deployment.
