@@ -231,9 +231,14 @@ appropriate opportunity to seek clarification.
 
 ## Group Contributions
 
-Each of the five members must review and contribute to
-this model card and record their own GitHub commit.
+Group G04's work is documented in this model card and the accompanying project README:
 
-The group must verify the dataset licence, threshold,
-fairness findings and release requirements before approval.
+| Member | Documented contribution |
+|---|---|
+| Festus Ligeyo | Dataset source, licence, cleaning steps and limitations |
+| Collins Kipkorir | Fairness differences and data-quality review |
+| Chirchir Collins | Model evaluation, threshold trade-offs and testing before release |
+| Peter Mbugua | Model packaging, application documentation and responsible-use safeguards |
+| Hartie Omuruon | Classification results, model limitations and responsible screening |
 
+The contribution sections record work reported by the group; individual GitHub commits and review history should be verified before assessment. The 30% referral threshold, fairness findings and proposed release criteria still require validation before operational use.
