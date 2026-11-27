@@ -276,3 +276,54 @@ The dataset may not accurately represent current SACCO applicants or local lendi
 The saved model should be evaluated on representative new data before operational deployment.
 
 The project is intended for educational demonstration and supports, but does not replace, human lending decisions.
+## Loan Officer Guidance and Responsible Screening
+
+### Contribution by Hartie Omuruon — COM/0084/23
+
+### Purpose of the Application
+
+The Mulika SACCO Loan Default Risk Screening application assists loan officers in identifying applications that may require additional review.
+
+It uses a trained Random Forest model to estimate the probability of loan default based on applicant and loan characteristics.
+
+The application is a decision-support tool and must not automatically approve or reject loan applications.
+
+### How Loan Officers Should Use the Application
+
+A loan officer enters the applicant's age, income, home ownership, employment length, loan purpose, assigned loan grade, requested loan amount, credit history length and previous default history.
+
+After clicking **Predict Default Risk**, the application displays the estimated probability of default.
+
+If the probability is 30% or higher, the application displays **Refer to loan officer**.
+
+The 30% threshold is provisional and requires further validation before real-world lending use.
+
+A prediction below the threshold does not guarantee that an applicant will repay the loan.
+
+### Model Performance and Limitations
+
+The Random Forest achieved an F1-score of 0.8339 at threshold 0.5 during the final model-card evaluation.
+
+At threshold 0.3, the model achieved default recall of 78.14% and an F1-score of 0.8108.
+
+Fairness testing found differences in default recall across home-ownership groups, indicating that some borrowers may receive less reliable predictions.
+
+The model also requires an internally assigned loan grade, which must be available before screening. Loan officers should not guess missing grades.
+
+Because the training dataset may not represent current SACCO applicants, model predictions must be interpreted cautiously.
+
+### Responsible Lending Decisions
+
+Loan officers should independently review applicant information, repayment capacity and relevant supporting documents.
+
+No applicant should be automatically rejected based solely on the model's estimated default probability.
+
+Applicants who are refused credit should receive a clear explanation of the actual reasons for the decision.
+
+The model should undergo further validation, fairness assessment and monitoring before operational deployment.
+
+### Recommendation
+
+I recommend using the application as a supervised educational demonstration until the proposed release requirements are satisfied.
+
+The SACCO should validate the referral threshold on representative data, investigate performance differences between borrower groups and maintain human oversight throughout the lending process.
