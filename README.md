@@ -67,6 +67,111 @@ streamlit run app/app.py
 The app loads the saved Random Forest pipeline and
 collects borrower details to calculate default risk.
 
+## Streamlit Application Setup and Deployment
+
+### Contribution by Peter Mbugua — COM/0039/23
+
+### Application Overview
+
+The Mulika SACCO Loan Default Risk Screening application was developed using Streamlit and a trained Random Forest classification pipeline.
+
+The application allows a loan officer to enter applicant information and obtain an estimated probability of loan default.
+
+The model supports human decision-making and does not automatically approve or reject loan applications.
+
+### Application Requirements
+
+The application requires:
+- Python 3.13
+- Streamlit
+- Scikit-learn
+- Pandas
+- Joblib
+
+The dependency versions are recorded in app/requirements.txt.
+
+### Running the Application Locally
+
+Open a terminal in the main CSC4110-G04 project directory.
+
+Install the dependencies:
+
+    pip install -r app/requirements.txt
+
+Start the application:
+
+    streamlit run app/app.py
+
+Open the local Streamlit URL displayed in the terminal.
+
+### Applicant Information
+
+The application collects:
+- Applicant age
+- Annual income
+- Home ownership
+- Employment length
+- Loan purpose
+- Internally assigned loan grade
+- Requested loan amount
+- Credit history length
+- Previous default history
+
+The loan-to-income ratio is calculated automatically.
+
+An internally assigned loan grade is required before prediction. The system must not guess this value.
+
+### Prediction Results
+
+After entering applicant details, the user clicks Predict Default Risk.
+
+The application loads models/G04_model.joblib and calculates the estimated probability of default.
+
+A provisional referral threshold of 30% is used.
+
+Applicants above or equal to the threshold are flagged with the message "Refer to loan officer".
+
+The threshold requires further validation before operational use.
+
+### Online Deployment
+
+The application is deployed using Streamlit Community Cloud.
+
+Public URL:
+https://mulika-sacco-g04.streamlit.app/
+
+GitHub repository:
+https://github.com/FestusAI/CSC4110-G04
+
+Deployment configuration:
+- Repository: FestusAI/CSC4110-G04
+- Branch: main
+- Main application: app/app.py
+- Dependencies: app/requirements.txt
+- Saved model: models/G04_model.joblib
+- Python version: 3.13
+
+### Troubleshooting
+
+If the application reports a missing Python module, check app/requirements.txt and the deployment logs.
+
+If the trained model cannot be loaded, confirm that models/G04_model.joblib exists and the required package versions are installed.
+
+If the application fails to display, confirm that Streamlit is running app/app.py rather than tests/smoke_test.py.
+
+The smoke test is available in tests/smoke_test.py and checks model loading and predictions.
+
+### Responsible Use
+
+This application is an educational demonstration.
+
+Real applicant financial information should not be entered during public testing.
+
+The model requires additional fairness, calibration and threshold validation before real-world use.
+
+Final lending decisions must remain with qualified loan officers.
+
+
 ## Online Application
 
 Public app URL: https://mulika-sacco-g04.streamlit.app/
