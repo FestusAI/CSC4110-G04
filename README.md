@@ -203,5 +203,24 @@ report/model_card.md
 It documents model performance, fairness findings,
 limitations, testing requirements and human oversight.
 
+## Smoke Test and Validation Review
+
+### Contribution by Chirchir Collins — COM/0020/23
+
+I reviewed the smoke-test procedure used to verify the Mulika SACCO loan-default prediction model.
+
+The test loads the saved Random Forest pipeline from `models/G04_model.joblib` and generates predictions for three records from the held-out test dataset.
+
+The recorded test results were default probabilities of 11.00%, 20.00% and 0.00%, with all three records classified as non-defaults. The test verifies that the model can load, generate three predictions and return probabilities within the valid range of 0 to 1.
+
+**Validation limitations**
+
+Although the smoke test confirms basic functionality, it does not establish model accuracy, fairness, probability calibration or suitability for real lending decisions.
+
+I recommend retaining the separate classification evaluation and fairness analysis, verifying the application through its public Streamlit interface, and conducting additional testing using representative loan applications before operational use.
+
+The provisional 30% referral threshold should also be validated specifically for the deployed Random Forest model.
+
 The current application is a coursework demonstration,
 not an approved real-world lending system.
+
