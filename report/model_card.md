@@ -229,6 +229,73 @@ Every application must receive appropriate human review.
 A refused applicant must be given a clear reason and an
 appropriate opportunity to seek clarification.
 
+## Dataset and Reproducibility
+
+### Contribution by Collins Kipkorir — COM/0021/23
+
+### Dataset Description
+
+The Mulika SACCO machine learning project uses the Credit Risk Dataset obtained from Kaggle.
+
+**Dataset source:** https://www.kaggle.com/datasets/laotse/credit-risk-dataset
+
+**Dataset licence:** CC0 — Public Domain
+
+The original dataset contains 32,581 loan records and 12 columns. After cleaning and transformation, the final dataset contains 32,409 records and 25 columns.
+
+The dataset contains borrower information, loan characteristics and credit-history information used to predict annual loan interest rates and loan defaults.
+
+### Dataset Files
+
+The project contains three main datasets:
+
+| File | Description |
+|---|---|
+| `data/credit_risk_dataset.csv` | Original dataset before cleaning |
+| `data/stage1_credit.csv` | Dataset after cleaning and missing-value handling |
+| `data/clean_credit.csv` | Final transformed dataset used for machine learning |
+
+### Data Preparation
+
+During Task 2.1, duplicate records and invalid values were removed. Missing employment lengths were filled using the median, and missing interest rates were estimated using the median for the corresponding loan grade.
+
+During Task 2.2, I transformed the data by encoding categorical features and creating additional variables, including age bands and logarithmic income.
+
+The cleaned dataset was saved as `data/clean_credit.csv`.
+
+### Reproducing the Project
+
+To reproduce the machine learning experiments:
+
+1. Open the Group G04 project in Google Colab.
+2. Connect the shared Google Drive folder.
+3. Run `G04_T01_setup.ipynb` to verify the project environment.
+4. Run `G04_U2.1_cleaning.ipynb` to reproduce the cleaning process.
+5. Run `G04_U2.2_eda_split.ipynb` to reproduce the feature transformations and exploratory analysis.
+6. Run the regression, classification, model evaluation, decision tree and neural network notebooks as required.
+7. Run `G04_U9.1_packaging_app.ipynb` to reproduce the saved prediction pipeline.
+8. Run the smoke test using `python tests/smoke_test.py` to verify model loading and predictions.
+
+### Reproducibility Settings
+
+The machine learning experiments use `random_state=42` for reproducibility where supported.
+
+Training and testing data are separated to reduce data leakage. Numerical scaling is fitted using training data only and then applied to testing data.
+
+For interest-rate regression, records containing imputed target values are excluded from model training, and `loan_grade` is removed because it is derived from interest rates.
+
+The application dependencies are documented in `app/requirements.txt`.
+
+### Reproducibility Limitations
+
+Although fixed random seeds help reproduce the experiments, results may vary across Python or library versions.
+
+The dataset may not accurately represent current SACCO applicants or local lending conditions.
+
+The saved model should be evaluated on representative new data before operational deployment.
+
+The project is intended for educational demonstration and supports, but does not replace, human lending decisions.
+
 ## Group Contributions
 
 Each of the five members must review and contribute to
@@ -236,3 +303,4 @@ this model card and record their own GitHub commit.
 
 The group must verify the dataset licence, threshold,
 fairness findings and release requirements before approval.
+
